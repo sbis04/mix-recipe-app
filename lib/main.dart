@@ -13,10 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        fontFamily: 'Gilroy',
+        fontFamily: 'GoogleSans',
       ),
+      debugShowCheckedModeBanner: false,
       darkTheme: ThemeData(
-        fontFamily: 'Gilroy',
+        fontFamily: 'GoogleSans',
         colorScheme: ColorScheme.fromSwatch(
           brightness: Brightness.dark,
         ),

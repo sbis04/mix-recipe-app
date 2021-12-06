@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mix/mix.dart';
 import 'package:recipe_app/res/mix.dart';
+import 'package:recipe_app/screens/find_page.dart';
 
 class GetStartedButton extends StatelessWidget {
   const GetStartedButton({
@@ -11,7 +12,13 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Pressable(
       variant: startedButton,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const FindPage(),
+          ),
+        );
+      },
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: const [

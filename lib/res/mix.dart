@@ -3,10 +3,9 @@ import 'package:mix/mix.dart';
 import 'package:recipe_app/res/palette.dart';
 
 const title = Var('title');
-
 const subtitle = Var('subtitle');
-
 const startedButton = Var('startedButton');
+const buttonIcon = Var('buttonIcon');
 
 Mix get overlay {
   return Mix(
@@ -53,6 +52,13 @@ Mix get overlay {
         elevation(1),
         scale(0.95),
       ),
+    ),
+    buttonIcon(
+      rounded(20),
+      h(40),
+      w(40),
+      bgColor(Colors.white),
+      iconColor(Palette.recipeGreen),
     ),
   );
 }

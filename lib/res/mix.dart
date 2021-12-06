@@ -19,7 +19,7 @@ Mix get overlay {
     subtitle(
       textStyle($subtitle1),
       font(
-        color: Colors.white70,
+        color: Palette.recipeWhite.withOpacity(0.7),
       ),
     ),
     title(
@@ -27,7 +27,7 @@ Mix get overlay {
       textStyle($h4),
       font(
         weight: FontWeight.bold,
-        color: Colors.white,
+        color: Palette.recipeWhite,
       ),
     ),
     startedButton(
@@ -46,7 +46,7 @@ Mix get overlay {
         weight: FontWeight.w500,
       ),
       dark(
-        textColor(Colors.white),
+        textColor(Palette.recipeWhite),
       ),
       press(
         elevation(1),
@@ -57,8 +57,74 @@ Mix get overlay {
       rounded(20),
       h(40),
       w(40),
-      bgColor(Colors.white),
+      bgColor(Palette.recipeWhite),
       iconColor(Palette.recipeGreen),
+    ),
+  );
+}
+
+const pageHeading = Var('pageHeading');
+
+Mix get findPage {
+  return Mix(
+    mainAxisSize(MainAxisSize.min),
+    mainAxis(MainAxisAlignment.start),
+    crossAxis(CrossAxisAlignment.start),
+    pageHeading(
+      padding(16),
+      titleCase(),
+      textStyle($h4),
+      font(
+        weight: FontWeight.bold,
+        color: Palette.recipeBlack,
+      ),
+    ),
+  );
+}
+
+const iconButton = Var('iconButton');
+
+Mix get searchRow {
+  return Mix(
+    gap(16),
+    paddingLeft(16),
+    paddingRight(16),
+    icon(
+      color: Palette.recipeBlack,
+      size: 26,
+    ),
+    iconButton(
+      rounded(10),
+      w(60),
+      h(60),
+      bgColor(Palette.recipeGreenLight),
+      gap(10),
+      icon(
+        color: Palette.recipeGreen,
+        size: 42,
+      ),
+    ),
+  );
+}
+
+const chip = Var('chip');
+
+Mix get chips {
+  return Mix(
+    gap(16),
+    paddingTop(24),
+    mainAxisSize(MainAxisSize.min),
+    chip(
+      rounded(16),
+      padding(16),
+      w(120),
+      bgColor(Palette.recipeGreen),
+      font(
+        color: Palette.recipeWhite,
+        weight: FontWeight.w500,
+        letterSpacing: 1,
+        size: 20,
+      ),
     ),
   );
 }

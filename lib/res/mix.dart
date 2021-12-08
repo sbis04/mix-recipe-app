@@ -107,17 +107,19 @@ Mix get searchRow {
   );
 }
 
-const chip = Var('chip');
+const activeChip = Var('activeChip');
+const inactiveChip = Var('inactiveChip');
 
 Mix get chips {
   return Mix(
     gap(16),
     paddingTop(24),
     mainAxisSize(MainAxisSize.min),
-    chip(
+    activeChip(
       rounded(16),
       padding(16),
       w(120),
+      h(60),
       bgColor(Palette.recipeGreen),
       font(
         color: Palette.recipeWhite,
@@ -126,5 +128,25 @@ Mix get chips {
         size: 20,
       ),
     ),
+    inactiveChip(
+      rounded(16),
+      padding(16),
+      w(120),
+      bgColor(Palette.recipeBlack.withOpacity(0.1)),
+      font(
+        color: Palette.recipeWhite,
+        weight: FontWeight.w500,
+        letterSpacing: 1,
+        size: 20,
+      ),
+    ),
+  );
+}
+
+Mix get recipeOverlay {
+  return Mix(
+    apply(overlay),
+    paddingLeft(32),
+    paddingBottom(24),
   );
 }

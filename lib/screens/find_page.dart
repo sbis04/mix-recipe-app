@@ -5,7 +5,8 @@ import 'package:recipe_app/res/palette.dart';
 import 'package:mix/mix.dart';
 import 'package:recipe_app/res/strings.dart';
 import 'package:recipe_app/screens/recipe_page.dart';
-import 'package:recipe_app/widgets/cover_page/get_started_button.dart';
+import 'package:recipe_app/widgets/find_page/recipe_card.dart';
+import 'package:recipe_app/widgets/find_page/search_row.dart';
 
 class FindPage extends StatefulWidget {
   const FindPage({Key? key}) : super(key: key);
@@ -50,51 +51,7 @@ class _FindPageState extends State<FindPage> {
                   findPageTitleString,
                 ),
               ),
-              searchRow.row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      style: const TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        hintText: "Search Recipe",
-                        hintStyle: const TextStyle(
-                          color: Palette.recipeBlack,
-                          fontSize: 16.0,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          borderSide: const BorderSide(
-                            color: Palette.recipeBlack,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          borderSide: const BorderSide(
-                            color: Palette.recipeBlack,
-                            width: 3,
-                          ),
-                        ),
-                        prefixIcon: const IconMix(
-                          icon: Icons.search,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Pressable(
-                    variant: iconButton,
-                    child: const Box(
-                      child: IconMix(
-                        icon: Icons.auto_awesome_mosaic_rounded,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+              const SearchRow(),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
@@ -115,46 +72,7 @@ class _FindPageState extends State<FindPage> {
                   ],
                 ),
               ),
-              Pressable(
-                mix: imagePresable,
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const RecipePage(),
-                    ),
-                  );
-                },
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomStart,
-                  children: [
-                    Box(
-                      mix: Mix(apply(imageBox), h(screenWidth * 1.2)),
-                      child: Hero(
-                        tag: 'image',
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: Image.asset(
-                            recipeImagePath1,
-                            fit: BoxFit.fitHeight,
-                          ),
-                        ),
-                      ),
-                    ),
-                    recipeOverlay.column(
-                      children: const [
-                        TextMix(
-                          recipeTitle,
-                          variant: title,
-                        ),
-                        TextMix(
-                          recipeDescription,
-                          variant: subtitle,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              RecipeCard(screenWidth: screenWidth),
             ],
           ),
         ),
@@ -162,3 +80,5 @@ class _FindPageState extends State<FindPage> {
     );
   }
 }
+
+

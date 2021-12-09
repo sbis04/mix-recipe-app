@@ -4,6 +4,8 @@ import 'package:recipe_app/res/images.dart';
 import 'package:recipe_app/res/mix.dart';
 import 'package:recipe_app/res/palette.dart';
 import 'package:recipe_app/res/strings.dart';
+import 'package:recipe_app/widgets/recipe_page/ingredients_column.dart';
+import 'package:recipe_app/widgets/recipe_page/ingredients_row.dart';
 
 class RecipePage extends StatelessWidget {
   const RecipePage({Key? key}) : super(key: key);
@@ -43,44 +45,13 @@ class RecipePage extends StatelessWidget {
                 ),
               ),
             ),
-            textChipRow.row(
-              children: [
-                const TextMix(
-                  ingredientsTitle,
-                  variant: rowTitle,
-                ),
-                Pressable(
-                  onPressed: () {},
-                  variant: serving,
-                  child: const Center(
-                    child: TextMix(oneServing),
-                  ),
-                ),
-              ],
-            ),
-            ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: ingredientsName.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 16),
-              itemBuilder: (context, index) {
-                return ingredientRow.row(
-                  children: [
-                    TextMix(
-                      ingredientsName[index],
-                      variant: ingredientTitle,
-                    ),
-                    TextMix(
-                      ingredientsQnt[index],
-                      variant: ingredientQnt,
-                    ),
-                  ],
-                );
-              },
-            )
+            const IngredientsRow(),
+            const IngredientsColumn()
           ],
         ),
       ),
     );
   }
 }
+
+

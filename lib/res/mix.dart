@@ -64,8 +64,9 @@ Mix get overlay {
 }
 
 const pageHeading = Var('pageHeading');
+const pageHeading2 = Var('pageHeading2');
 
-Mix get findPage {
+Mix get page {
   return Mix(
     mainAxisSize(MainAxisSize.min),
     mainAxis(MainAxisAlignment.start),
@@ -74,6 +75,15 @@ Mix get findPage {
       padding(16),
       titleCase(),
       textStyle($h4),
+      font(
+        weight: FontWeight.bold,
+        color: Palette.recipeBlack,
+      ),
+    ),
+    pageHeading2(
+      padding(16),
+      titleCase(),
+      fontSize(28),
       font(
         weight: FontWeight.bold,
         color: Palette.recipeBlack,
@@ -148,5 +158,86 @@ Mix get recipeOverlay {
     apply(overlay),
     paddingLeft(32),
     paddingBottom(24),
+  );
+}
+
+Mix get imagePresable {
+  return Mix(
+    animated(),
+    scale(1),
+    press(
+      scale(0.90),
+    ),
+  );
+}
+
+Mix get imageBox {
+  return Mix(
+    paddingTop(24),
+    rounded(30),
+    paddingHorizontal(16),
+  );
+}
+
+const rowTitle = Var('rowTitle');
+const serving = Var('serving');
+
+Mix get textChipRow {
+  return Mix(
+    mainAxis(MainAxisAlignment.spaceBetween),
+    rowTitle(
+      padding(16),
+      titleCase(),
+      fontSize(28),
+      font(
+        weight: FontWeight.bold,
+        color: Palette.recipeBlack,
+      ),
+    ),
+    serving(
+      animated(),
+      scale(1),
+      press(
+        scale(0.90),
+      ),
+      rounded(16),
+      paddingVertical(10),
+      paddingHorizontal(24),
+      bgColor(Palette.recipeGreen),
+      font(
+        color: Palette.recipeWhite,
+        weight: FontWeight.w500,
+        size: 16,
+      ),
+    ),
+  );
+}
+
+const ingredientTitle = Var('ingredientTitle');
+const ingredientQnt = Var('ingredientQnt');
+
+Mix get ingredientRow {
+  return Mix(
+    mainAxis(MainAxisAlignment.spaceBetween),
+    bgColor(Palette.recipeWhite),
+    rounded(16),
+    elevation(4),
+    padding(24),
+    ingredientTitle(
+      titleCase(),
+      textStyle($h6),
+      font(
+        weight: FontWeight.bold,
+        color: Palette.recipeBlack,
+      ),
+    ),
+    ingredientQnt(
+      titleCase(),
+      textStyle($body1),
+      font(
+        weight: FontWeight.bold,
+        color: Palette.recipeBlack.withOpacity(0.5),
+      ),
+    ),
   );
 }

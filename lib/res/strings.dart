@@ -10,3 +10,24 @@ const List<String> chipTexts = ['All', 'Sushi', 'Burger', 'Dessert'];
 
 const String recipeTitle = "Salmon Sushi";
 const String recipeDescription = "12 Ingredients | 40 Min";
+
+// recipe page
+const String ingredientsTitle = 'Ingredients';
+const String oneServing = '1 Serving';
+
+const List<String> ingredientsName = [
+  'Matcha',
+  'Rice',
+  'Salmon',
+  'Wasabi',
+  'Rice wine vinegar',
+  'Cucumber'
+];
+const List<String> ingredientsQnt = [
+  '1 teaspoon',
+  '200g',
+  '400g',
+  '2 tablespoons',
+  '6 tablespoons',
+  '1'
+];

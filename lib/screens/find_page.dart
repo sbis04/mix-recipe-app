@@ -4,6 +4,7 @@ import 'package:recipe_app/res/mix.dart';
 import 'package:recipe_app/res/palette.dart';
 import 'package:mix/mix.dart';
 import 'package:recipe_app/res/strings.dart';
+import 'package:recipe_app/screens/recipe_page.dart';
 import 'package:recipe_app/widgets/cover_page/get_started_button.dart';
 
 class FindPage extends StatefulWidget {
@@ -41,7 +42,7 @@ class _FindPageState extends State<FindPage> {
       backgroundColor: Palette.recipeWhite,
       body: SingleChildScrollView(
         child: SafeArea(
-          child: findPage.column(
+          child: page.column(
             children: [
               const Box(
                 variant: pageHeading,
@@ -114,38 +115,45 @@ class _FindPageState extends State<FindPage> {
                   ],
                 ),
               ),
-              Stack(
-                alignment: AlignmentDirectional.bottomStart,
-                children: [
-                  Box(
-                    mix: Mix(
-                      paddingTop(24),
-                      rounded(30),
-                      paddingHorizontal(16),
-                      h(screenWidth * 1.2),
+              Pressable(
+                mix: imagePresable,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const RecipePage(),
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Image.asset(
-                        recipeImagePath1,
-                        fit: BoxFit.fitHeight,
+                  );
+                },
+                child: Stack(
+                  alignment: AlignmentDirectional.bottomStart,
+                  children: [
+                    Box(
+                      mix: Mix(apply(imageBox), h(screenWidth * 1.2)),
+                      child: Hero(
+                        tag: 'image',
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Image.asset(
+                            recipeImagePath1,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  recipeOverlay.column(
-                    children: const [
-                      TextMix(
-                        recipeTitle,
-                        variant: title,
-                      ),
-                      TextMix(
-                        recipeDescription,
-                        variant: subtitle,
-                      ),
-                      // GetStartedButton(),
-                    ],
-                  ),
-                ],
+                    recipeOverlay.column(
+                      children: const [
+                        TextMix(
+                          recipeTitle,
+                          variant: title,
+                        ),
+                        TextMix(
+                          recipeDescription,
+                          variant: subtitle,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
